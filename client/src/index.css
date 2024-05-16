@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  height: 100%;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+::-webkit-scrollbar {
+  cursor: pointer;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background: #121212;
+  border-radius: 5px;
+}
+::-webkit-scrollbar:hover {
+  background: #242424;
+}
