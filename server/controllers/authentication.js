@@ -27,7 +27,7 @@ export const register = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const profilePicture = `https://ui-avatars.com/api/?name=${username}&background=random`;
+    const profilePicture = `https://ui-avatars.com/api/?name=${fullName}&background=random`;
 
     const newUser = new User({
       fullName,

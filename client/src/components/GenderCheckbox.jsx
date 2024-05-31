@@ -1,15 +1,37 @@
 import React from "react";
 
-const GenderCheckbox = () => {
+const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
   return (
     <div className="flex justify-around pt-4">
       <div className="form-control">
-        <span className="label-text text-white">Male</span>
-        <input type="checkbox" className="checkbox" border-slate-900 />
+        <label
+          className={`label gap-2 cursor-pointer ${
+            selectedGender === "male" ? "selected" : ""
+          }`}
+        >
+          <span className="label-text text-white">Male</span>
+          <input
+            type="checkbox"
+            className="checkbox border-slate-900"
+            checked={selectedGender === "male"}
+            onChange={() => onCheckboxChange("male")}
+          />
+        </label>
       </div>
       <div className="form-control">
-        <span className="label-text text-white">Female</span>
-        <input type="checkbox" className="checkbox" border-slate-900 />
+        <label
+          className={`label gap-2 cursor-pointer ${
+            selectedGender === "male" ? "selected" : ""
+          }`}
+        >
+          <span className="label-text text-white">Female</span>
+          <input
+            type="checkbox"
+            className="checkbox border-slate-900"
+            checked={selectedGender === "female"}
+            onChange={() => onCheckboxChange("female")}
+          />
+        </label>
       </div>
     </div>
   );
