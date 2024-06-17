@@ -13,13 +13,24 @@ const messageSchema = mongoose.Schema(
       required: true,
     },
     message: {
-      type: String,
+      type: mongoose.Schema.Types.Mixed,
       required: true,
+    },
+    messageType: {
+      type: String,
+      enum: ["text", "file", "emoji"], // Adăugăm un câmp pentru a specifica tipul de mesaj
+      required: true,
+    },
+    fileUrl: {
+      type: String,
+    },
+    emojiCode: {
+      type: String,
     },
   },
   { timestamps: true }
 );
 
-const Message = new mongoose.model("Message", messageSchema);
+const Message = mongoose.model("Message", messageSchema);
 
 export default Message;
