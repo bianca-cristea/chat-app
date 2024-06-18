@@ -9,7 +9,6 @@ const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
   useEffect(() => {
-    //cleanup
     return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
   return (

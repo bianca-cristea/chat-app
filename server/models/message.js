@@ -18,7 +18,7 @@ const messageSchema = mongoose.Schema(
     },
     messageType: {
       type: String,
-      enum: ["text", "file", "emoji"], // Adăugăm un câmp pentru a specifica tipul de mesaj
+      enum: ["text", "file", "emoji"],
       required: true,
     },
     fileUrl: {

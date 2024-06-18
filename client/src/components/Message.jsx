@@ -17,7 +17,6 @@ const Message = ({ message }) => {
 
   const bubbleBgColor = fromMe ? "bg-blue-500" : "";
 
-  // Verificăm dacă conținutul mesajului este o imagine
   const isImageMessage = message.messageType === "file";
   let src = "";
   if (isImageMessage) src = `data:image/png;base64,${message.message}`;

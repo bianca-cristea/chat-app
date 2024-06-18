@@ -39,10 +39,8 @@ const useSignup = () => {
       if (data.error) {
         throw new Error(data.error);
       }
-      //set the user logged in to the localStorage
-      //data is the obj that we see in the console
       localStorage.setItem("user-info", JSON.stringify(data));
-      //update the context
+
       setAuthUser(data);
     } catch (error) {
       toast.error(error.message);

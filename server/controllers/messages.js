@@ -72,7 +72,7 @@ export const receiveMessage = async (req, res) => {
 
     const conversation = await Conversation.findOne({
       participants: { $all: [senderId, receiverId] },
-    }).populate("messages"); // inner join și adaugă mesajele în loc de ID-ul lor
+    }).populate("messages");
 
     if (!conversation) return res.status(200).json([]);
 

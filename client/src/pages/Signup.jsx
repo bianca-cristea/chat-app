@@ -46,7 +46,6 @@ const Signup = () => {
               placeholder="Type here"
               className="input input-bordered w-full h-10 max-w-xs"
               value={inputs.fullName}
-              //mai jos se creeaza un nou obiect care conține toate proprietățile din inputs (prin { ...inputs }) și suprascrie valoarea proprietății fullName
               onChange={(e) =>
                 setInputs({ ...inputs, fullName: e.target.value })
               }
