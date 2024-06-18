@@ -6,17 +6,23 @@ import multer from "multer";
 const upload = multer();
 
 export const sendMessage = [
-  upload.single("file"), // Adaugă multer ca middleware
+  upload.single("file"),
   async (req, res) => {
     try {
       const { id: recipientId } = req.params;
       const senderId = req.user._id;
 
+      if (!recipientId || !senderId) {
+        return res
+          .status(400)
+          .json({ error: "Recipient and sender IDs are required" });
+      }
+
       let message;
       let messageType;
 
       if (req.file) {
-        message = req.file.buffer; // Sau puteți salva fișierul undeva și stocați calea
+        message = req.file.buffer.toString("base64");
         messageType = "file";
       } else if (req.body.content) {
         message = req.body.content;
@@ -42,13 +48,10 @@ export const sendMessage = [
         messageType,
       });
 
-      if (newMessage) {
-        conversation.messages.push(newMessage._id);
-      }
+      conversation.messages.push(newMessage._id);
 
       await Promise.all([conversation.save(), newMessage.save()]);
 
-      // socket message functionality
       const receiverSocketId = getReceiverSocketId(recipientId);
       if (receiverSocketId) {
         io.to(receiverSocketId).emit("newMessage", newMessage);
@@ -56,10 +59,8 @@ export const sendMessage = [
 
       res.status(201).json(newMessage);
     } catch (error) {
-      console.log("Error in sendMessage controller ", error.message);
-      res.status(500).json({
-        error: "Server error",
-      });
+      console.error("Error in sendMessage controller: ", error.message);
+      res.status(500).json({ error: "Server error" });
     }
   },
 ];
