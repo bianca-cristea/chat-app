@@ -28,15 +28,15 @@ const Message = ({ message }) => {
           <img alt="Profile pic" src={profilePicture} />
         </div>
       </div>
-      <div className={`chat-bubble text-white ${bubbleBgColor} b-2 w-40`}>
+      <div className={`chat-bubble text-white ${bubbleBgColor} b-2 w-auto`}>
         {isImageMessage ? (
           <img
             src={src}
-            style={{ maxWidth: "100%", height: "auto" }}
+            style={{ maxWidth: "70px", height: "auto" }}
             alt="Sent Image"
           />
         ) : (
-          <span>{message.message}</span>
+          <span className="p-0">{message.message}</span>
         )}
       </div>
       <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
